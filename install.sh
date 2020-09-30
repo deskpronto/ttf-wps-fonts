@@ -1,37 +1,9 @@
 #!/bin/bash
 
-cd "$( dirname "${BASH_SOURCE[0]}" )"
-HOME_FONT="$HOME/.fonts"
-MOST_DISTROS="/usr/share/fonts"
+ mkdir /usr/share/fonts/wps-fonts
 
-if test -e $MOST_DISTROS ; then
-        FONT_PATH=$MOST_DISTROS
-else
-        FONT_PATH=$HOME_FONT
-fi
-
-FONT_PATH=$FONT_PATH"/wps-fonts"
-
-if [ -d "$FONT_PATH" ]; then
-  while read -r -t 0; do read -r; done 
-  if [[ $REPLY == "" ]]; then
-    exit 0
-  elif [[ $REPLY =~ ^[Nn]$ ]]; then
-    exit 0
-  fi
-fi
-
-if [[ $REPLY =~ ^[Nn]$ ]]; then
-  exit 0
-fi
-
-if [ ! -d "$FONT_PATH" ]; then
-  mkdir $FONT_PATH
-fi
-
-cp *.ttf $FONT_PATH
-cp *.TTF $FONT_PATH
-chmod 644 $FONT_PATH/*
+cp *.ttf /usr/share/fonts/wps-fonts
+cp *.TTF /usr/share/fonts/wps-fonts
+chmod 644 /usr/share/fonts/wps-fonts/*
 fc-cache -vfs
 
-exit 0
