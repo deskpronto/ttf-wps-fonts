@@ -1,11 +1,6 @@
 #!/bin/bash
 
 cd "$( dirname "${BASH_SOURCE[0]}" )"
-
-if [[ $(id -u) -ne 0 ]] ; then
-  exit 1
-fi
-
 HOME_FONT="$HOME/.fonts"
 MOST_DISTROS="/usr/share/fonts"
 
